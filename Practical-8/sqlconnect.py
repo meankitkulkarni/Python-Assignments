@@ -18,6 +18,16 @@ CREATE TABLE IF NOT EXISTS students (
 )
 """)
 
+# Insert student records
+cursor.execute("""
+INSERT INTO students (name, roll_no, marks)
+VALUES (?, ?, ?)
+""", ("Ankit Kulkarni", "39", 85))
+
+connection.commit()
+
+print("Student record added successfully!")
+
 # Save changes
 connection.commit()
 
