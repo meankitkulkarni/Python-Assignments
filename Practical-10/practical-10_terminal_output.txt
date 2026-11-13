@@ -1,0 +1,71 @@
+Last login: Fri Nov 13 15:52:46 on console
+(base) ankitkulkarni@Ankits-MacBook-Air ~ % mkdir practical10
+(base) ankitkulkarni@Ankits-MacBook-Air ~ % cd practical10
+(base) ankitkulkarni@Ankits-MacBook-Air practical10 % python inventory.py
+Order fulfilled! Final discounted price: ₹900.00
+(base) ankitkulkarni@Ankits-MacBook-Air practical10 % cat inventory.log
+2026-11-14 03:02:43,739 - INFO - Checking stock: available=50, requested=5
+2026-11-14 03:02:43,739 - INFO - Stock check passed: 50 units available
+2026-11-14 03:02:43,739 - DEBUG - Calculating total price: price=200, quantity=5
+2026-11-14 03:02:43,739 - INFO - Calculated total price: 1000.00
+2026-11-14 03:02:43,739 - DEBUG - Applying discount: total=1000, discount_percent=10
+2026-11-14 03:02:43,739 - INFO - Discounted amount after 10% discount: 900.00
+(base) ankitkulkarni@Ankits-MacBook-Air practical10 % python -m pytest test_inventory.py -v
+================================================= test session starts ==================================================
+platform darwin -- Python 3.14.6, pytest-9.0.3, pluggy-1.6.0 -- /opt/homebrew/anaconda3/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/ankitkulkarni/practical10
+plugins: anyio-4.12.1
+collected 8 items                                                                                                      
+
+test_inventory.py::test_calculate_total_price_valid PASSED                                                       [ 12%]
+test_inventory.py::test_calculate_total_price_negative_price PASSED                                              [ 25%]
+test_inventory.py::test_calculate_total_price_zero_quantity PASSED                                               [ 37%]
+test_inventory.py::test_apply_discount_valid PASSED                                                              [ 50%]
+test_inventory.py::test_apply_discount_invalid_percent PASSED                                                    [ 62%]
+test_inventory.py::test_check_stock_sufficient PASSED                                                            [ 75%]
+test_inventory.py::test_check_stock_insufficient PASSED                                                          [ 87%]
+test_inventory.py::test_check_stock_negative_available PASSED                                                    [100%]
+
+================================================== 8 passed in 0.01s ===================================================
+(base) ankitkulkarni@Ankits-MacBook-Air practical10 % python -m ruff format inventory.py test_inventory.py
+2 files reformatted
+(base) ankitkulkarni@Ankits-MacBook-Air practical10 % python -m ruff check inventory.py test_inventory.py
+All checks passed!
+(base) ankitkulkarni@Ankits-MacBook-Air practical10 % python -m pip install --upgrade pip
+Requirement already satisfied: pip in /opt/homebrew/anaconda3/lib/python3.14/site-packages (26.1.2)
+Collecting pip
+  Using cached pip-26.3-py3-none-any.whl.metadata (4.6 kB)
+Using cached pip-26.3-py3-none-any.whl (2.0 MB)
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 26.1.2
+    Uninstalling pip-26.1.2:
+      Successfully uninstalled pip-26.1.2
+Successfully installed pip-26.3
+(base) ankitkulkarni@Ankits-MacBook-Air practical10 % python -m pip install pytest ruff  
+Requirement already satisfied: pytest in /opt/homebrew/anaconda3/lib/python3.14/site-packages (9.0.3)
+Requirement already satisfied: ruff in /opt/homebrew/anaconda3/lib/python3.14/site-packages (0.15.1)
+Requirement already satisfied: iniconfig>=1.0.1 in /opt/homebrew/anaconda3/lib/python3.14/site-packages (from pytest) (2.3.0)
+Requirement already satisfied: packaging>=22 in /opt/homebrew/anaconda3/lib/python3.14/site-packages (from pytest) (26.0)
+Requirement already satisfied: pluggy<2,>=1.5 in /opt/homebrew/anaconda3/lib/python3.14/site-packages (from pytest) (1.6.0)
+Requirement already satisfied: pygments>=2.7.2 in /opt/homebrew/anaconda3/lib/python3.14/site-packages (from pytest) (2.20.0)
+(base) ankitkulkarni@Ankits-MacBook-Air practical10 % python inventory.py
+Order fulfilled! Final discounted price: ₹900.00
+(base) ankitkulkarni@Ankits-MacBook-Air practical10 % cat inventory.log
+2026-11-14 03:02:43,739 - INFO - Checking stock: available=50, requested=5
+2026-11-14 03:02:43,739 - INFO - Stock check passed: 50 units available
+2026-11-14 03:02:43,739 - DEBUG - Calculating total price: price=200, quantity=5
+2026-11-14 03:02:43,739 - INFO - Calculated total price: 1000.00
+2026-11-14 03:02:43,739 - DEBUG - Applying discount: total=1000, discount_percent=10
+2026-11-14 03:02:43,739 - INFO - Discounted amount after 10% discount: 900.00
+2026-11-14 03:05:34,084 - INFO - Checking stock: available=50, requested=5
+2026-11-14 03:05:34,084 - INFO - Stock check passed: 50 units available
+2026-11-14 03:05:34,084 - DEBUG - Calculating total price: price=200, quantity=5
+2026-11-14 03:05:34,084 - INFO - Calculated total price: 1000.00
+2026-11-14 03:05:34,084 - DEBUG - Applying discount: total=1000, discount_percent=10
+2026-11-14 03:05:34,084 - INFO - Discounted amount after 10% discount: 900.00
+(base) ankitkulkarni@Ankits-MacBook-Air practical10 % python -m ruff format inventory.py test_inventory.py
+2 files left unchanged
+(base) ankitkulkarni@Ankits-MacBook-Air practical10 % python -m ruff check inventory.py test_inventory.py
+All checks passed!
